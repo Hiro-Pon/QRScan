@@ -70,6 +70,7 @@ extension ScanViewModel: AVCaptureMetadataOutputObjectsDelegate {
             }
             
             foundQRRelay.accept((count: foundQRRelay.value.count + 1, text: text))
+            recentlyScanedQR.append(text)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() +  10) {
                 if let index = self.recentlyScanedQR.firstIndex(of: text) {
                     self.recentlyScanedQR.remove(at: index)
